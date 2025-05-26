@@ -1,0 +1,17 @@
+{
+  "name": "s86_periyavaram-srihasini_capstone_fuzzyloop",
+  "version": "1.0.0",
+  "description": "FuzzyLoop is a full-stack web application for pet lovers to browse, purchase pets and pet-related products, and manage orders. It also includes an admin dashboard for managing inventory and orders. The application is built using the MERN (MongoDB, Express, React, Node.js) stack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.15.0"
+  }
+}

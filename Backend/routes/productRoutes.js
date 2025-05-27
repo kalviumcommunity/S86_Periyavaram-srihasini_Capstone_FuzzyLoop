@@ -1,12 +1,8 @@
 const express = require('express');
+const router = express.Router();
 const { getAllProducts, createProduct } = require('../controllers/productController');
 
-const router = express.Router();
-
-// GET all products
 router.get('/', getAllProducts);
-
-// POST a new product
-router.post('/', createProduct);
+router.post('/', createProduct);  // <-- POST endpoint
 
 module.exports = router;

@@ -1,46 +1,51 @@
-// models/productModel.js
-
 const mongoose = require('mongoose');
 
 // Define the product schema
-const productSchema = mongoose.Schema(
+const productSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,  // Name of the product (required field)
+      required: [true, "Product name is required"],
     },
     price: {
       type: Number,
-      required: true,  // Price of the product (required field)
+      required: [true, "Product price is required"],
     },
     description: {
       type: String,
-      required: true,  // Description of the product (required field)
+      required: [true, "Product description is required"],
     },
     category: {
       type: String,
-      required: true,  // Category of the product (required field)
+      required: [true, "Product category is required"],
     },
     imageUrl: {
       type: String,
-      required: false,  // Optional: URL to the product image
+      default: "", // you can store image URL or base64 string
     },
-    stockQuantity: {
+    stock: {
       type: Number,
-      default: 0,  // Default to 0 if not provided
+      default: 0,
     },
-    ratings: {
+    rating: {
       type: Number,
-      min: 1,
-      max: 5,
-      default: 5,  // Default rating is 5 (highest)
+      default: 0,
     },
+    reviews: [
+      {
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+        comment: String,
+        rating: Number,
+      },
+    ],
   },
-  { timestamps: true }  // Automatically add 'createdAt' and 'updatedAt' fields
+  {
+    timestamps: true, // automatically adds createdAt and updatedAt fields
+  }
 );
 
-// Create the Product model from the schema
-const Product = mongoose.model('Product', productSchema);
-
-// Export the Product model to use it in controllers or other files
-module.exports = Product;
+// Export the model
+module.exports = mongoose.model("Product", productSchema);

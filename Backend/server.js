@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const productRoutes = require('./routes/productRoutes');
+const entryRoutes = require('./routes/entryRoutes');
 
 // Load env variables
 dotenv.config();
@@ -13,6 +14,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use('/api/entries', entryRoutes);
 
 // Routes
 app.get('/', (req, res) => {

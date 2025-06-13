@@ -1,11 +1,13 @@
+// routes/entryRoutes.js
+
 const express = require('express');
 const router = express.Router();
 const {
+  getAllEntries,
   createEntry,
-  getEntries
 } = require('../controllers/entryController');
 
-router.post('/', createEntry); // Write to DB
-router.get('/', getEntries);   // Read from DB
+router.get('/', getAllEntries);
+router.post('/', createEntry);
 
 module.exports = router;

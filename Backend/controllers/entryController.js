@@ -1,22 +1,35 @@
-const Entry = require('../models/Entry');
+// controllers/entryController.js
 
-// POST - Create a new entry
-exports.createEntry = async (req, res) => {
+const Entry = require('../models/entry');
+
+// Get all entries with related product info
+const getAllEntries = async (req, res) => {
   try {
-    const newEntry = new Entry(req.body);
-    const savedEntry = await newEntry.save();
-    res.status(201).json(savedEntry);
+    const entries = await Entry.find().populate('product');
+    res.status(200).json(entries);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
 
-// GET - Get all entries
-exports.getEntries = async (req, res) => {
+// Create a new entry with product reference
+const createEntry = async (req, res) => {
+  const { title, message, productId } = req.body;
+
   try {
-    const entries = await Entry.find();
-    res.status(200).json(entries);
+    const newEntry = await Entry.create({
+      title,
+      message,
+      product: productId,
+    });
+
+    res.status(201).json(newEntry);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(400).json({ message: error.message });
   }
+};
+
+module.exports = {
+  getAllEntries,
+  createEntry,
 };

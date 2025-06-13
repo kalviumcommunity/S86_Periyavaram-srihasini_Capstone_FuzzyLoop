@@ -1,3 +1,5 @@
+// models/entry.js
+
 const mongoose = require('mongoose');
 
 const entrySchema = new mongoose.Schema({
@@ -7,6 +9,11 @@ const entrySchema = new mongoose.Schema({
   },
   message: {
     type: String,
+    required: true,
+  },
+  product: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Product', // 🔗 reference to Product
     required: true,
   },
 }, { timestamps: true });

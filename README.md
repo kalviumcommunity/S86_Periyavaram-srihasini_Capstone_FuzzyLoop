@@ -62,3 +62,7 @@ Day 3 – GitHub Setup and Planning
 
 ## Render link
 https://s86-periyavaram-srihasini-capstone-2l66.onrender.com
+
+
+## Netlify link
+https://fuzzyloop.netlify.app/

@@ -16,6 +16,8 @@ app.use('/api/entries', entryRoutes);
 app.get('/', (req, res) => {
   res.send('API is running...');
 });
+const uploadRoute = require('./routes/uploadRoute');
+app.use('/api', uploadRoute);
 
 const PORT = process.env.PORT || 5000;
 
